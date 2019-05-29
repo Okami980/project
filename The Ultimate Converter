@@ -1,0 +1,76 @@
+print("Welcome to the ultimate Conversion-Calculator")
+temp = input("Pick out the temperature you need changed : ")
+degree = int(temp[:-1])
+i_convention = temp[-1]
+
+if i_convention.upper() == "C":
+  result = int(round((9 * degree) / 5 + 32))
+  o_convention = "Fahrenheit"
+elif i_convention.upper() == "F":
+  result = int(round((degree - 32) * 5 / 9))
+  o_convention = "Celsius"
+else:
+  print("Input proper convention.")
+  quit()
+print("The temperature in", o_convention, "is", result, "degrees.")
+
+metric_length=['km', 'm' , 'cm']
+imperial_length=['mi', 'ft', 'in']
+menu_type=['Length-1', 'Weight-2', 'Cacpacity-3']
+metric_mass=['t','kg', 'g']
+imperial_mass=['stone', 'lb', 'oz']
+
+converters = dict()
+converters['km'] = lambda x: '{} {}'.format(x/1.6, 'miles')
+converters['m'] = lambda x: '{} {}'.format(x*3.26, 'feet')
+converters['cm'] = lambda x: '{} {}'.format(x/2.54, 'inches')
+converters['mi'] = lambda x: '{} {}'.format(x*1.6, 'kilometers')
+converters['ft'] = lambda x: '{} {}'.format(x/3.26, 'meters')
+converters['in'] = lambda x: '{} {}'.format(x*2.54, 'centimeters')
+converters['t'] = lambda x: '{} {}'.format(x*157.47, 'stone')
+converters['kg'] = lambda x: '{} {}'.format(x*2.2, 'pounds')
+converters['g'] = lambda x: '{} {}'.format(x*0.035, 'ounces')
+converters['stone'] = lambda x: '{} {}'.format(x*0.00635, 'tonnes')
+converters['lb'] = lambda x: '{} {}'.format(x*0.4536, 'kilograms')
+converters['oz'] = lambda x: '{} {}'.format(x*28.35, 'grams')
+
+print('\n'.join(menu_type))
+measure=int(input("Please select what you want to convert:"))
+
+
+if measure==1:
+ 
+ print("Metric-Imperial - 1")
+ print("Imperial-Metric - 2")
+ choice=int(input("Choose the metric or imperial: "))
+
+ 
+ if choice== 1:
+     print('\n'.join(metric_length))    
+ 
+ if choice== 2:
+     print('\n'.join(imperial_length))
+    
+
+
+if measure==2:
+ 
+ print("Metric-Imperial - 1\n")
+ print("Imperial-Metric - 2\n")
+ choice2=int(input("Choose a conversion: "))
+ 
+ if choice2== 1:
+     print('\n'.join(metric_mass))
+     
+ if choice2== 2:
+     print('\n'.join(imperial_mass))
+
+option = input("Handpick what you want converted: ") 
+if option not in converters.keys():
+    print('Invalid Entry')
+else:
+    leng1=int(input("Pick the number you would like to convert: "))
+    print(converters[option](leng1))
+
+
+
